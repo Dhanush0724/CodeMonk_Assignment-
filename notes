@@ -3,3 +3,16 @@ docker-compose exec web python manage.py migrate
 
 
 docker-compose up -d
+
+
+docker-compose logs -f web
+
+
+# Stop and remove running containers
+docker-compose down
+
+# Rebuild containers using the updated requirements.txt
+docker-compose build
+
+# Start containers in detached mode
+docker-compose up -d
