@@ -23,3 +23,11 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Invalid credentials")
+
+class ParagraphSubmitSerializer(serializers.Serializer):
+    text = serializers.CharField()
+
+    def validate_text(self, value):
+        if not value.strip():
+            raise serializers.ValidationError("Input text cannot be empty.")
+        return value
