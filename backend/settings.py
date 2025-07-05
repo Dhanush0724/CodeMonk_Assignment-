@@ -29,6 +29,8 @@ DEBUG = config('DEBUG', cast=bool, default=True)
 ALLOWED_HOSTS = ['*']
 
 
+AUTH_USER_MODEL = 'core.User'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -84,6 +86,12 @@ DATABASES = {
         'HOST': config('DB_HOST'),
         'PORT': config('DB_PORT', cast=int),
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
 }
 
 
