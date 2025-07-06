@@ -31,3 +31,12 @@ class ParagraphSubmitSerializer(serializers.Serializer):
         if not value.strip():
             raise serializers.ValidationError("Input text cannot be empty.")
         return value
+    
+class WordSearchSerializer(serializers.Serializer):
+    word = serializers.CharField()
+
+    def validate_word(self, value):
+        word = value.strip().lower()
+        if not word:
+            raise serializers.ValidationError("Search word cannot be empty.")
+        return word

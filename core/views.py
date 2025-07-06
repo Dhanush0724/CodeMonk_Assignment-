@@ -3,7 +3,7 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 from .models import User, Paragraph, WordIndex
-from .serializers import RegisterSerializer, LoginSerializer, ParagraphSubmitSerializer
+from .serializers import RegisterSerializer, LoginSerializer, ParagraphSubmitSerializer, WordSearchSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from .utils import tokenize
 from rest_framework.permissions import IsAuthenticated
@@ -55,3 +55,46 @@ class ParagraphSubmitView(generics.GenericAPIView):
             {"message": f"{len(inserted_ids)} paragraph(s) added.", "paragraph_ids": inserted_ids},
             status=status.HTTP_201_CREATED
         )
+    
+class WordSearchView(generics.GenericAPIView):
+    serializer_class = WordSearchSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = self.get_serializer(data=request.query_params)
+        serializer.is_valid(raise_exception=True)
+        word = serializer.validated_word['word']
+
+        paragraph_ids = (
+            WordIndex.objects
+            .filter(word=word)
+            .values_list('paragraph_id', flat=True)
+            .distinct()
+        )
+
+        # Retrieve top 10 paragraphs
+        paragraphs = (
+            Paragraph.objects
+            .filter(id__in=paragraph_ids)
+            .select_related('user')
+            .order_by('createdAt')[:10]
+        )
+
+        result = [
+            {
+                "id": str(p.id),
+                "content": p.content,
+                "created_at": p.createdAt,
+                "user": {
+                    "name": p.user.name,
+                    "email": p.user.email
+                }
+            }
+            for p in paragraphs
+        ]
+
+        return Response({
+            "search": word,
+            "count": len(result),
+            "results": result
+        })

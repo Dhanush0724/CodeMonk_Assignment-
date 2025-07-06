@@ -16,3 +16,15 @@ docker-compose build
 
 # Start containers in detached mode
 docker-compose up -d
+
+
+
+john@example.com
+test123
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MTgxMDIzNCwiaWF0IjoxNzUxNzIzODM0LCJqdGkiOiI5NDZkZjgwNzAzNzM0MGMyYTQ5ZmI5NzllY2JjMzQ0NSIsInVzZXJfaWQiOiJmNzViZWU0Zi1lNzk3LTQyZWYtYTM2NS1lNWFjZjc4YjlmNDUifQ.HWnTrR2JyEmaZZyE7XyeyHCPIfKTz662Uu-mJlcAXIg",
+
+    
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNzI0MTM0LCJpYXQiOjE3NTE3MjM4MzQsImp0aSI6IjFiOTQ5YzFjOGQ3ZjQwM2ZhYjE5YTAwMmZhOWUxOTI1IiwidXNlcl9pZCI6ImY3NWJlZTRmLWU3OTctNDJlZi1hMzY1LWU1YWNmNzhiOWY0NSJ9.ysM576UR1zUUaYTrJLPzvFBiG_cGINLtS47QHKF-9Z4"
+}
