@@ -63,7 +63,7 @@ class WordSearchView(generics.GenericAPIView):
     def get(self, request):
         serializer = self.get_serializer(data=request.query_params)
         serializer.is_valid(raise_exception=True)
-        word = serializer.validated_word['word']
+        word = serializer.validated_data['word']
 
         paragraph_ids = (
             WordIndex.objects
