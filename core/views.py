@@ -8,10 +8,18 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .utils import tokenize
 from rest_framework.permissions import IsAuthenticated
 
+
+# Views for user registration, login, paragraph submission, and word search
+# These views handle the HTTP requests and responses for the core functionalities of the application.
+
+
+# RegisterView handles user registration
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
+
+# This view handles user registration
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
 
@@ -26,6 +34,9 @@ class LoginView(generics.GenericAPIView):
         })
 
 
+# ParagraphSubmitView handles submission of paragraphs by authenticated users
+# It processes the input text, splits it into paragraphs, and saves them to the database
+# It also tokenizes the paragraphs and creates word mappings for efficient searching
 class ParagraphSubmitView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
 
@@ -55,7 +66,10 @@ class ParagraphSubmitView(generics.GenericAPIView):
             {"message": f"{len(inserted_ids)} paragraph(s) added.", "paragraph_ids": inserted_ids},
             status=status.HTTP_201_CREATED
         )
-    
+
+
+# WordSearchView handles searching for paragraphs containing a specific word
+# It retrieves the paragraphs that contain the word and returns the top 10 results
 class WordSearchView(generics.GenericAPIView):
     serializer_class = WordSearchSerializer
     permission_classes = [IsAuthenticated]

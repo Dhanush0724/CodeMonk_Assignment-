@@ -77,6 +77,8 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+#PostgreSQL database configuration using python-decouple
+# Make sure to install python-decouple: pip install python-decouple
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql',
@@ -88,6 +90,7 @@ DATABASES = {
     }
 }
 
+# Rest Framework settings added here
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',

@@ -4,6 +4,9 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.conf import settings
+
+
+# Custom user manager for handling user creation
 class UserManager(BaseUserManager):
     def create_user(self, email, name, password=None, **extra_fields):
         if not email:
@@ -21,6 +24,9 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
+
+# Custom User model
+# Using AbstractBaseUser and PermissionsMixin to create a custom user model
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
@@ -42,6 +48,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 
+## Paragraph model to store user-submitted paragraphs
+# Each paragraph is linked to a user and contains the text content
 class Paragraph(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='paragraphs')
@@ -52,6 +60,9 @@ class Paragraph(models.Model):
     def __str__(self):
         return f'Paragraph {self.id}'
     
+
+# WordIndex model to map words to paragraphs
+# This model allows efficient searching of paragraphs by words
 class WordIndex(models.Model):
     word = models.CharField(max_length=100, db_index=True)
     paragraph = models.ForeignKey(Paragraph, on_delete=models.CASCADE, related_name='word_mappings')
