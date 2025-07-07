@@ -73,7 +73,17 @@ docker-compose exec web python manage.py migrate
 
 ## 📘 Postman Support
 
-Import Paragraph_API.postman_collection.json into Postman
+Import CodeMonk_Assignment.postman_collection.json into Postman
+✅ Steps to follow:
+1. Register a user using `/api/register/`
+2. Login using `/api/login/` to get an access token
+3. Use the access token in the `Authorization` header for all protected routes:
+   `Authorization: Bearer <your_access_token>`
+4. Submit paragraphs using `/api/paragraphs/`
+5. Search for a word using `/api/search/?word=example`
+
+⚠️ If you get a 401 Unauthorized error, your token has likely expired — login again to get a new one.
+
 
 # Includes:
 
