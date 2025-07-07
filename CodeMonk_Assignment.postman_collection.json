@@ -1,0 +1,470 @@
+{
+	"info": {
+		"_postman_id": "3e6dcf0f-1f68-40c3-8cb4-820c2a76da0a",
+		"name": "CodeMonk_Assignment",
+		"description": "🧾 CodeMonk_Assignment – Paragraph Word Search API\n\nThis Postman collection allows you to test the full flow of the Paragraph Word Search API.\n\n✅ Steps to follow:\n\n1. Register a user using `/api/register/`\n    \n2. Login using `/api/login/` to get an access token\n    \n3. Use the access token in the `Authorization` header for all protected routes:  \n    `Authorization: Bearer`\n    \n4. Submit paragraphs using `/api/paragraphs/`\n    \n5. Search for a word using `/api/search/?word=example`\n    \n\n⚠️ If you get a 401 Unauthorized error, your token has likely expired — login again to get a new one.\n\n💡 All responses are in JSON. The API is secured using JWT authentication.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37489542"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Test User\",\r\n  \"email\": \"testt@example.com\",\r\n  \"password\": \"test1234\",\r\n  \"dob\": \"2000-01-01\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Test User\",\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"test1234\",\r\n  \"dob\": \"2000-01-01\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 06 Jul 2025 12:46:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "110"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"b28e7eb3-16a3-430d-a41a-a7ecc737d790\",\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"dob\": \"2000-01-01\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"testt@example.com\",\r\n  \"password\": \"test1234\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"test1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 06 Jul 2025 12:47:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "582"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MTg5MjQ2NiwiaWF0IjoxNzUxODA2MDY2LCJqdGkiOiIyM2JhYjJiYzY1OTg0NGJiYmNiYTEwMDRhZTRhMGRiYSIsInVzZXJfaWQiOiJiMjhlN2ViMy0xNmEzLTQzMGQtYTQxYS1hN2VjYzczN2Q3OTAifQ.FiEnGzUnakOW7OxFnqPy_bejXxc3CtYp61qopOqz1tM\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxODA2MzY2LCJpYXQiOjE3NTE4MDYwNjYsImp0aSI6ImNhMGVmMjQyZWE1OTQ1ZTdhNzBkZTgyNWY5OWI5YTUxIiwidXNlcl9pZCI6ImIyOGU3ZWIzLTE2YTMtNDMwZC1hNDFhLWE3ZWNjNzM3ZDc5MCJ9.u6cUYyw7VArZ9PokH4qwSt91NpIUcsrtBpBQxGINYYg\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create New Paragraph",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxODcwNTc2LCJpYXQiOjE3NTE4NzAyNzYsImp0aSI6IjM0Y2M5ODE5N2Q1MjQ5ZWE5ZGFkMmQ0ODZlZmE4MTg3IiwidXNlcl9pZCI6Ijc4MTBkYmM0LTQ3Y2QtNDVhYy1hZmY3LWY2YTkzYjBlMmZmYyJ9.fKvp7qDHJNfVsUvCngKJeoUKnPewphc8-Kz-chsLSNc",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"text\": \"This is the second paragraph james .\\n\\nThis is the third one with Django.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/paragraphs/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"paragraphs",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxODA2MzY2LCJpYXQiOjE3NTE4MDYwNjYsImp0aSI6ImNhMGVmMjQyZWE1OTQ1ZTdhNzBkZTgyNWY5OWI5YTUxIiwidXNlcl9pZCI6ImIyOGU3ZWIzLTE2YTMtNDMwZC1hNDFhLWE3ZWNjNzM3ZDc5MCJ9.u6cUYyw7VArZ9PokH4qwSt91NpIUcsrtBpBQxGINYYg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"This is the first paragraph.\\n\\nThis is the second one with Django.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/paragraphs/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"paragraphs",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 06 Jul 2025 12:49:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "131"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"2 paragraph(s) added.\",\n    \"paragraph_ids\": [\n        \"5a1a1304-005c-469a-9d58-e477ad25b684\",\n        \"63afe5dc-096d-4f51-b2ac-cf149300e462\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Search Word",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxODcwNTc2LCJpYXQiOjE3NTE4NzAyNzYsImp0aSI6IjM0Y2M5ODE5N2Q1MjQ5ZWE5ZGFkMmQ0ODZlZmE4MTg3IiwidXNlcl9pZCI6Ijc4MTBkYmM0LTQ3Y2QtNDVhYy1hZmY3LWY2YTkzYjBlMmZmYyJ9.fKvp7qDHJNfVsUvCngKJeoUKnPewphc8-Kz-chsLSNc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/search/?word=django",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "django"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxODA2MzY2LCJpYXQiOjE3NTE4MDYwNjYsImp0aSI6ImNhMGVmMjQyZWE1OTQ1ZTdhNzBkZTgyNWY5OWI5YTUxIiwidXNlcl9pZCI6ImIyOGU3ZWIzLTE2YTMtNDMwZC1hNDFhLWE3ZWNjNzM3ZDc5MCJ9.u6cUYyw7VArZ9PokH4qwSt91NpIUcsrtBpBQxGINYYg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/search/?word=django",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "word",
+									"value": "django"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 06 Jul 2025 12:51:41 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.11.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "491"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"search\": \"django\",\n    \"count\": 2,\n    \"results\": [\n        {\n            \"id\": \"34d5d3cb-e3a8-4e8d-925e-295cdf349a99\",\n            \"content\": \"Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.\",\n            \"created_at\": \"2025-07-06T12:00:29.862331Z\",\n            \"user\": {\n                \"name\": \"John\",\n                \"email\": \"john@example.com\"\n            }\n        },\n        {\n            \"id\": \"63afe5dc-096d-4f51-b2ac-cf149300e462\",\n            \"content\": \"This is the second one with Django.\",\n            \"created_at\": \"2025-07-06T12:49:46.511686Z\",\n            \"user\": {\n                \"name\": \"Test User\",\n                \"email\": \"test@example.com\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
