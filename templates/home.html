@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paragraph API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+      background: #f9f9f9;
+    }
+    h2 { color: green; }
+    code { background: #eee; padding: 2px 6px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h2>✅ Backend API is Running</h2>
+  <p>
+  You can use Postman to test the following endpoints:<br><br>
+  👉 Download the Postman collection file: <code>CodeMonk_Assignment.postman_collection.json</code><br>
+  👉 Open Postman and click <strong>Import</strong><br>
+  👉 Choose the downloaded collection file<br>
+  👉 You'll see all API endpoints organized under <strong>CodeMonk_Assignment</strong><br>
+  💡 Make sure to set the JWT token in the "Authorization : Bearer your_access_token" header after login for protected routes of paragraphs and search.<br>
+  ⚠️ If your token has expired or returns a 401 error:<br>
+  - Login again using the <strong>/api/login/</strong> endpoint<br>
+  - Copy the new <code>access</code> token from the response<br>
+  - In Postman, go to the headers of protected routes (<code>/api/paragraphs/</code> and <code>/api/search/</code>)<br>
+  - Add this header: <code>Authorization: Bearer &lt;your_access_token&gt;</code><br><br>
+</p>
+  <ul>
+    <li><code>POST /api/register/</code> – Register a user</li>
+    <li><code>POST /api/login/</code> – Login to get JWT token</li>
+    <li><code>POST /api/paragraphs/</code> – Submit paragraphs</li>
+    <li><code>GET /api/search/?word=hello</code> – Search paragraphs</li>
+
+  </ul>
+  <p>✅ You're now ready to test the API securely.</p>
+</body>
+</html>
