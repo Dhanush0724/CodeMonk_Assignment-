@@ -20,7 +20,7 @@ A RESTful API to submit paragraphs, tokenize and index words, and search for par
 - **Search**:
   - Returns top 10 most recent paragraphs where a word appears
 - **Docs**:
-  - Postman collection (`Paragraph_API.postman_collection.json`)
+  - Postman collection (`CodeMonk_Assignment.postman_collection.json`)
 ---
 
 ## 🐳 How to Run (Docker)
